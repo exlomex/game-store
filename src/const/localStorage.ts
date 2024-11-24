@@ -1,0 +1,1 @@
+export const USER_ACCESS_TOKEN_KEY = 'user_token'

@@ -1,0 +1,1 @@
+export {GoodPage} from './GoodPage'
