@@ -1,0 +1,49 @@
+.Header {
+    background-color: var(--dark-blue);
+    padding: 40px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0 30px;
+    color: var(--white);
+    max-height: var(--header-height);
+
+    .Navigation {
+        display: flex;
+        gap: 0 40px;
+        font-weight: 400;
+        font-size: 18px;
+
+        .NavigationItem {
+            position: relative;
+            cursor: pointer;
+
+            &:hover::after {
+                background-color: var(--active-field);
+            }
+
+            &::after {
+                transition: background-color .2s ease-out;
+                width: 120%;
+                padding: 0 30px;
+                height: 180%;
+                position: absolute;
+                left: 50%;
+                border-radius: 12px;
+                transform: translateX(-50%) translateY(-50%);
+                top: 50%;
+                content: '';
+                background-color: transparent;
+            }
+        }
+    }
+
+    .HeaderAuth {
+        font-size: 22px;
+        transition: color .3s ease;
+
+        &:hover {
+            color: var(--grey);
+        }
+    }
+}

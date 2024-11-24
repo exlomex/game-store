@@ -37,7 +37,11 @@ export const UserSlice = createSlice({
                 const tokenInfo: tokenInfoTypes = jwtDecode(token || '')
                 state.role = tokenInfo.role;
             }
+        },
+        setSearchIsOpen: (state: UserSliceSchema, action: PayloadAction<boolean>) => {
+            state.searchIsOpen = action.payload
         }
+
     }
 });
 

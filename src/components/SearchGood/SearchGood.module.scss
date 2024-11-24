@@ -1,0 +1,64 @@
+.Overlay {
+    position: fixed;
+    visibility: hidden;
+
+    &_active {
+        visibility: visible;
+        inset: 0;
+        z-index: 999;
+        background-color: transparent;
+    }
+}
+
+.SearchGood {
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 750px;
+    background-color: var(--field);
+    border-radius: 12px;
+    cursor: pointer;
+    padding: 20px 15px;
+    position: relative;
+    transition: all .3s ease;
+    z-index: 9999;
+    border: 1px solid var(--active-field);
+
+    &.inputActive {
+        background-color: var(--active-field-second);
+    }
+
+    .Input_wrapper {
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+        gap: 0 15px;
+
+        svg {
+            flex-shrink: 0;
+        }
+    }
+
+    .Input {
+        min-width: 80px;
+        height: 30px;
+        font-size: 24px;
+        background-color: transparent;
+        border-radius: 8px;
+        width: 100%;
+        color: var(--white);
+
+        &.inputActive::placeholder {
+            color: var(--white);
+        }
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .SearchGood {
+        width: 100%;
+    }
+}

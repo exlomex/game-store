@@ -1,0 +1,33 @@
+.AsideNavigation {
+    width: 390px;
+    height: calc(100vh - var(--header-height));
+    background-color: var(--dark-blue);
+    padding: 30px;
+
+    .AsideNavigationItems {
+        margin-top: 50px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px 0;
+
+        .AsideNavigationItem {
+            padding: 0 18px;
+            height: 65px;
+            cursor: pointer;
+            color: var(--white);
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            gap: 0 40px;
+            border-radius: 12px;
+
+            p {
+            }
+
+            &:hover {
+                background-color: var(--active-field);
+            }
+        }
+    }
+}
