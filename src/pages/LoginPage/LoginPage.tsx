@@ -1,19 +1,20 @@
 import { classNames } from '@/lib/classNames';
-import cls from './CategoryPage.module.scss';
-import {MainLayout} from "@/components/layouts/MainLayout";
+import cls from './LoginPage.module.scss';
 import {AsideNavigation} from "@/components/AsideNavigation";
 import {Header} from "@/components/Header";
+import {MainLayout} from "@/components/layouts/MainLayout";
+import {LoginForm} from "@/components/LoginForm";
 
-interface CategoryPageProps {
+interface LoginPageProps {
     className?: string;
 }
 
-export const CategoryPage = (props: CategoryPageProps) => {
+export const LoginPage = (props: LoginPageProps) => {
     const { className } = props;
     return (
-        <div className={classNames(cls.CategoryPage, {}, [className])}>
+        <div className={classNames(cls.LoginPage, {}, [className])}>
             <MainLayout AsideMenu={<AsideNavigation/>} Header={<Header/>} Content={
-                <div>categorypage</div>
+                <LoginForm/>
             }/>
         </div>
     )

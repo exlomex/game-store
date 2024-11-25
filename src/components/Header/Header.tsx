@@ -5,6 +5,8 @@ import {Link, useNavigate} from "react-router-dom";
 import {ReactComponent as LogoIcon} from "@/assets/logoIcon.svg";
 import {useSelector} from "react-redux";
 import {getUserAuth} from "@/store/selectors/getUserValues";
+import {useAppDispatch} from "@/hooks/useAppDispatch";
+import {UserSliceActions} from "@/store/reducers/UserSlice";
 
 interface HeaderProps {
     className?: string;
@@ -29,6 +31,10 @@ export const Header = (props: HeaderProps) => {
         console.log(titleKey);
         navigation('/goods/search')
     }
+    const dispatch = useAppDispatch()
+    const onLogoutClickHandler = () => {
+        dispatch(UserSliceActions.logout())
+    }
 
     return (
         <header className={classNames(cls.Header, {}, [className])}>
@@ -45,7 +51,7 @@ export const Header = (props: HeaderProps) => {
                 ))}
             </nav>
 
-            {!isAuth ? (<Link to={'login'} className={cls.HeaderAuth}>Войти</Link>) : <p className={cls.HeaderAuth}>Выйти</p>}
+            {!isAuth ? (<Link to={'/login'} state={{ from: window.location.pathname }} className={cls.HeaderAuth}>Войти</Link>) : <p className={cls.HeaderAuth} onClick={onLogoutClickHandler}>Выйти</p>}
         </header>
     )
 };

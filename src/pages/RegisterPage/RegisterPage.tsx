@@ -1,19 +1,20 @@
 import { classNames } from '@/lib/classNames';
-import cls from './CategoryPage.module.scss';
+import cls from './RegisterPage.module.scss';
 import {MainLayout} from "@/components/layouts/MainLayout";
 import {AsideNavigation} from "@/components/AsideNavigation";
 import {Header} from "@/components/Header";
+import {RegisterForm} from "@/components/RegisterForm";
 
-interface CategoryPageProps {
+interface RegisterPageProps {
     className?: string;
 }
 
-export const CategoryPage = (props: CategoryPageProps) => {
+export const RegisterPage = (props: RegisterPageProps) => {
     const { className } = props;
     return (
-        <div className={classNames(cls.CategoryPage, {}, [className])}>
+        <div className={classNames(cls.RegisterPage, {}, [className])}>
             <MainLayout AsideMenu={<AsideNavigation/>} Header={<Header/>} Content={
-                <div>categorypage</div>
+                <RegisterForm/>
             }/>
         </div>
     )

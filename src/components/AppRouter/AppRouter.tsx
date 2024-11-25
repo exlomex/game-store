@@ -5,6 +5,8 @@ import {UserRoles} from "@/store/reducers/UserSliceSchema";
 import {GoodPage} from '@/pages/GoodPage'
 import {CategoryPage} from "@/pages/CategoryPage/CategoryPage";
 import React from "react";
+import {LoginPage} from "@/pages/LoginPage";
+import {RegisterPage} from "@/pages/RegisterPage";
 
 export const AppRouter = () => (
         <Routes>
@@ -16,15 +18,21 @@ export const AppRouter = () => (
                     <div>admin page</div>
                 </RequireAuth>
             }/>
-            <Route path="/goods" element={
+            <Route path="/goods/search" element={
                 <CategoryPage/>
             }/>
-            <Route path="/goods/:id" element={
+            <Route path="/goods:id" element={
                 <GoodPage/>
             }/>
-            <Route path="/cart" element={
-                <RequireAuth roles={[UserRoles.ADMIN, UserRoles.USER]}>
-                    cartpage
+            <Route path="/login" element={
+                <RequireAuth roles={[UserRoles.GUEST]}>
+                    <LoginPage/>
+                </RequireAuth>
+            }/>
+
+            <Route path="/register" element={
+                <RequireAuth roles={[UserRoles.GUEST]}>
+                    <RegisterPage/>
                 </RequireAuth>
             }/>
             {/*<Route path="/order" element={*/}

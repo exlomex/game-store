@@ -1,0 +1,86 @@
+.RegisterForm {
+    overflow: auto;
+    max-height: calc(100vh - var(--header-height));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+
+    .RegisterFormTitle {
+        font-size: 35px;
+        font-weight: 500;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    .RegisterFormForma {
+        display: flex;
+        flex-direction: column;
+
+        max-width: 570px;
+        width: 85%;
+
+        .InputButton {
+            max-width: 80%;
+            margin: 35px auto 0;
+        }
+
+        .InputWrapper {
+            margin-bottom: 10px;
+            height: 98px;
+
+            input {
+                margin-bottom: 1px;
+            }
+
+            .InputTitle {
+                display: block;
+                font-size: 1.333em;
+                margin-bottom: 12px;
+
+                span {
+                    color: var(--red);
+                }
+            }
+
+            .InputErrorText {
+                display: inline-block;
+                margin-top: 5px;
+                font-weight: 400;
+                font-size: 14px;
+                color: var(--red);
+            }
+        }
+
+        .FormBottomBlock {
+            margin-top: 15px;
+
+            display: flex;
+            gap: 0 6px;
+            justify-content: center;
+
+            p {
+                font-size: 0.889em;
+            }
+
+            p:first-child {
+                font-weight: 400;
+                color: var(--grey);
+            }
+
+            p:last-child {
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 400px) {
+    .RegisterForm {
+        .RegisterFormForma {
+            width: 100%;
+        }
+    }
+}

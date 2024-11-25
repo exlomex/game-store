@@ -1,0 +1,31 @@
+.Button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    width: 200px;
+    height: 44px;
+    background: var(--dark-blue);
+    color: white;
+    transition: background-color .2s ease;
+
+    font-size: 17px;
+    font-weight: 400;
+
+    &:hover {
+        background-color: var(--black);
+    }
+
+    &.FullWidthButton {
+        width: 100%;
+    }
+
+    &[disabled] {
+        cursor: auto;
+        background-color: var(--light-grey);
+    }
+
+    &.AddGoodButton {
+
+    }
+}

@@ -1,4 +1,4 @@
-import {ReactNode, useEffect} from "react";
+import {ReactNode} from "react";
 import {UserRoles} from "@/store/reducers/UserSliceSchema";
 import {useSelector} from "react-redux";
 import {getUserAuth, getUserRole} from "@/store/selectors/getUserValues";
@@ -16,7 +16,13 @@ export const RequireAuth = (props: RequireAuthProps) => {
     const CurrentUserRole = useSelector(getUserRole)
     const location = useLocation()
 
-    if (!isAuth || !(roles.includes(CurrentUserRole))) {
+    if (isAuth && roles.length === 1 && roles[0] === UserRoles.GUEST) {
+        return (
+            <Navigate to={'/'} state={{ from: location }} replace/>
+        )
+    }
+
+    if (!isAuth && !(roles.includes(CurrentUserRole))) {
 
         return (
             <Navigate to={'/'} state={{ from: location }} replace/>

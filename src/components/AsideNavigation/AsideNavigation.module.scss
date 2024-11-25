@@ -3,6 +3,8 @@
     height: calc(100vh - var(--header-height));
     background-color: var(--dark-blue);
     padding: 30px;
+    flex-shrink: 0;
+
 
     .AsideNavigationItems {
         margin-top: 50px;

@@ -1,0 +1,48 @@
+.Input {
+    background-color: var(--white);
+    color: var(--black);
+    border: 2px solid var(--grey);
+    font-size: 0.889em;
+    font-weight: 400;
+    border-radius: 12px;
+    min-width: 100px;
+    height: 47px;
+    width: 100%;
+    padding: 1px 18px 0 18px;
+
+    transition: background-color 0.2s ease-out, border 0.2s ease-out;
+
+    &::placeholder {
+        color: var(--grey);
+        font-weight: 400;
+        font-size: 17px;
+    }
+
+    &:focus {
+        border-color: var(--dark-blue);
+    }
+
+    &:hover {
+        border-color: var(--dark-blue);
+    }
+}
+
+.InputWrapper {
+    position: relative;
+
+    svg {
+        position: absolute;
+
+        transform: translateY(-50%);
+        top: 50%;
+    }
+
+    .OpenEyeIcon  {
+        cursor: pointer;
+
+        svg {
+            right: 18px;
+        }
+    }
+}
+
