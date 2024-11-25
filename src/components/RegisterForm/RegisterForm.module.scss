@@ -1,6 +1,6 @@
 .RegisterForm {
     overflow: auto;
-    max-height: calc(100vh - var(--header-height));
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;

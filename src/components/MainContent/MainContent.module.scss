@@ -1,0 +1,31 @@
+.MainContent {
+    height: 100%;
+    overflow: auto;
+
+    .ContentInner {
+        .ContentMainBox {
+            margin-bottom: 40px;
+            width: 100%;
+            height: 400px;
+            background-color: var(--light-grey);
+            border-radius: 24px;
+            padding: 100px;
+
+            p {
+                line-height: 130%;
+                max-width: 390px;
+                font-size: 36px;
+
+                span {
+                    font-weight: 600;
+                }
+            }
+        }
+
+        .ContentGoods {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+    }
+}

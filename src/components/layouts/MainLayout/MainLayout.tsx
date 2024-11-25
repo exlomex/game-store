@@ -15,8 +15,8 @@ export const MainLayout = (props: MainLayoutProps) => {
         <div className={classNames(cls.MainLayout, {}, [className])}>
             {Header}
             <div className={cls.LayoutSplit}>
-                {AsideMenu}
-                {Content}
+                <div className={cls.LayoutAside}>{AsideMenu}</div>
+                <div className={cls.LayoutContent}>{Content}</div>
             </div>
         </div>
     )
