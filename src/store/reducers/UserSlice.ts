@@ -41,7 +41,6 @@ export const UserSlice = createSlice({
         setSearchIsOpen: (state: UserSliceSchema, action: PayloadAction<boolean>) => {
             state.searchIsOpen = action.payload
         }
-
     }
 });
 

@@ -3,10 +3,12 @@ import {configureStore, ReducersMapObject} from "@reduxjs/toolkit";
 import {rtkApi} from "@/api/RtkApi";
 import {$api} from "@/api/AxiosApi";
 import {UserSliceReducer} from "@/store/reducers/UserSlice";
+import {FilterSliceReducer} from "@/store/reducers/FilterSlice";
 
 export function createReduxStore(initialState?: StateSchema) {
     const rootReducers: ReducersMapObject<StateSchema> = {
         user: UserSliceReducer,
+        filter: FilterSliceReducer,
         [rtkApi.reducerPath]: rtkApi.reducer,
     };
 

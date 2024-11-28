@@ -7,6 +7,9 @@ import {useSelector} from "react-redux";
 import {getUserAuth} from "@/store/selectors/getUserValues";
 import {useAppDispatch} from "@/hooks/useAppDispatch";
 import {UserSliceActions} from "@/store/reducers/UserSlice";
+import {AllConsoles} from "@/store/reducers/FilterSliceSchema";
+import {FilterSliceActions} from "@/store/reducers/FilterSlice";
+import {getFilterConsole} from "@/store/selectors/getFilterValues";
 
 interface HeaderProps {
     className?: string;
@@ -17,18 +20,20 @@ export const Header = (props: HeaderProps) => {
 
     const isAuth = useSelector(getUserAuth)
 
-    const navItems: {title: string, titleKey: string}[] = [
+    const navItems: {title: string, titleKey: AllConsoles}[] = [
         { title: 'PC', titleKey: 'PC' },
         { title: 'PS4', titleKey: 'PS4' },
         { title: 'PS5', titleKey: 'PS5' },
-        { title: 'Xbox', titleKey: 'Xbox' },
+        { title: 'Xbox', titleKey: 'XBOX' },
         { title: 'Nintendo Switch', titleKey: 'NINTENDO' },
     ]
 
+    const currentConsole = useSelector(getFilterConsole)
+
     const navigation = useNavigate()
 
-    const onNavigationItemClickHandler = (titleKey: string) => () => {
-        console.log(titleKey);
+    const onNavigationItemClickHandler = (titleKey: AllConsoles) => () => {
+        dispatch(FilterSliceActions.setConsoleFilter(titleKey))
         navigation('/goods/search')
     }
     const dispatch = useAppDispatch()
@@ -45,7 +50,7 @@ export const Header = (props: HeaderProps) => {
             <nav className={cls.Navigation}>
                 {navItems.map((item, index) => (
                     <a
-                        className={cls.NavigationItem}
+                        className={classNames(cls.NavigationItem, {[cls.Active]: item.titleKey === currentConsole}, [])}
                         key={index}
                         onClick={onNavigationItemClickHandler(item.titleKey)}>{item.title}</a>
                 ))}

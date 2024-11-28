@@ -17,7 +17,7 @@ export const AsideNavigation = (props: AsideNavigationProps) => {
     const { className } = props;
 
     const asideMenuItems: {title: string, icon: ReactElement, to: string}[] = [
-        {title: 'Главная', icon: <HomeIcon/>, to: ''},
+        {title: 'Главная', icon: <HomeIcon/>, to: '/'},
         {title: 'Игры', icon: <GameIcon/>, to: '/goods/search'},
         {title: 'Промокоды', icon: <PromoIcon/>, to: '/promo'},
         {title: 'Корзина', icon: <CartIcon/>, to: '/cart'},
@@ -30,7 +30,7 @@ export const AsideNavigation = (props: AsideNavigationProps) => {
 
             <nav className={cls.AsideNavigationItems}>
                 {asideMenuItems.map((item, index) => (
-                    <Link to={''} key={index} className={cls.AsideNavigationItem}>
+                    <Link to={item.to} key={index} className={cls.AsideNavigationItem}>
                         {item.icon}
                         <p>{item.title}</p>
                     </Link>
