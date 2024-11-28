@@ -1,0 +1,1 @@
+export {GoodReviews} from './GoodReviews'

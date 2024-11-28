@@ -21,7 +21,7 @@ export const AppRouter = () => (
             <Route path="/goods/search" element={
                 <CategoryPage/>
             }/>
-            <Route path="/goods:id" element={
+            <Route path="/goods/:id" element={
                 <GoodPage/>
             }/>
             <Route path="/login" element={

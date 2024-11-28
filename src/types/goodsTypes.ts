@@ -1,7 +1,7 @@
 export type consoleTypes = 'PC' | 'PS5' | 'PS4' | 'NINTENDO' | 'XBOX'
 export type genreTypes = 'FIGHTING' | 'SPORT'
 
-export interface reviewType {
+export interface ReviewType {
     "id": number,
     "description": string,
     "rating": number,
@@ -20,5 +20,5 @@ export interface GoodType {
     "genre": genreTypes,
     "image": string | null,
     "orderedCount": number,
-    "reviews": reviewType[]
+    "reviews": ReviewType[]
 }

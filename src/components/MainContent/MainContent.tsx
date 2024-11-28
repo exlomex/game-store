@@ -25,7 +25,7 @@ export const MainContent = (props: MainContentProps) => {
 
                     <div className={cls.ContentGoods}>
                         {goods && goods.map(good => (
-                            <GoodCard key={good.id} title={good.title} price={good.price} image={good.image} />
+                            <GoodCard id={good.id} key={good.id} title={good.title} price={good.price} image={good.image} />
                         ))}
                     </div>
 

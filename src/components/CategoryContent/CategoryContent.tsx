@@ -84,7 +84,7 @@ export const CategoryContent = (props: CategoryContentProps) => {
 
                     <div className={cls.CategoryGoods}>
                         {filtredGoods && filtredGoods.map(good => (
-                            <GoodCard key={good.id} title={good.title} price={good.price} image={good.image}/>
+                            <GoodCard id={good.id} key={good.id} title={good.title} price={good.price} image={good.image}/>
                         ))}
                     </div>
                 </div>

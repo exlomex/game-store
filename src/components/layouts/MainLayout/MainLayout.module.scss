@@ -10,6 +10,7 @@
         .LayoutContent {
             height: calc(100vh - var(--header-height));
             width: 100%;
+            overflow: auto;
         }
     }
 }
