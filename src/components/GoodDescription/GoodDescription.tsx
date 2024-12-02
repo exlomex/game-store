@@ -4,8 +4,9 @@ import {useFetchGoodById} from "@/components/GoodDescription/api/fetchGoodById";
 import {MainContainer} from "@/components/MainContainer";
 import {Button} from "@/components/ui/Button";
 import {useSelector} from "react-redux";
-import {getUserAuth} from "@/store/selectors/getUserValues";
+import {getUserAuth, getUserCartIdByGoodId, getUserCartIds} from "@/store/selectors/getUserValues";
 import {AllConsoles, AllGenres} from "@/store/reducers/FilterSliceSchema";
+import {useGoodButtonHandler} from "@/hooks/useButtonClickHandler";
 
 interface GoodDescriptionProps {
     className?: string;
@@ -17,15 +18,12 @@ export const GoodDescription = (props: GoodDescriptionProps) => {
 
     const {data} = useFetchGoodById({id: goodId})
 
-    // const cartIds = useSelector(getUserCartIds)
-
-    // TODO CART
-    const isGoodInCartByIds = false
-    // const isGoodInCartByIds = cartIds.includes(goodId)
+    const cartIds = useSelector(getUserCartIds)
+    const isGoodInCartByIds = cartIds.includes(goodId)
     const isAuth = useSelector(getUserAuth)
-    // const cartIdByGoodId = useSelector(getUserCartIdByGoodId(goodId))
+    const cartIdByGoodId = useSelector(getUserCartIdByGoodId(goodId))
 
-    // const {onGoodButtonClickHandler} = useGoodButtonHandler()
+    const {onGoodButtonClickHandler} = useGoodButtonHandler()
 
     type specificationsInterface = {
         [key in (AllConsoles | AllGenres)]: string;
@@ -68,8 +66,7 @@ export const GoodDescription = (props: GoodDescriptionProps) => {
                         </div>
 
                         <p className={cls.GoodDescriptionPrice}>{data.price} ₽</p>
-                        <Button disabled={!isAuth}>{isGoodInCartByIds ? 'Удалить из корзины' : 'В корзину'}</Button>
-                        {/*<Button onClick={onGoodButtonClickHandler(isGoodInCartByIds, goodId, cartIdByGoodId)} disabled={!isAuth}>{isGoodInCartByIds ? 'Удалить из корзины' : 'В корзину'}</Button>*/}
+                        <Button onClick={onGoodButtonClickHandler(isGoodInCartByIds, goodId, cartIdByGoodId)} disabled={!isAuth}>{isGoodInCartByIds ? 'Удалить из корзины' : 'В корзину'}</Button>
                     </div>
                 </div>
             </MainContainer>

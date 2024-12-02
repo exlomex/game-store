@@ -1,4 +1,5 @@
 import {JwtPayload} from "jwt-decode";
+import {GoodType} from "@/types/goodsTypes";
 
 export enum UserRoles {
     ADMIN =  'ADMIN',
@@ -6,10 +7,19 @@ export enum UserRoles {
     GUEST = 'GUEST'
 }
 
+export interface cartItem {
+    id: number;
+    quantity: number;
+    good: GoodType;
+    userId: number;
+}
+
 export interface UserSliceSchema {
     isAuth: boolean;
     role: UserRoles;
     searchIsOpen: boolean;
+    cartItems: cartItem[]
+    activeCartCheckboxes: Record<number, boolean>;
 }
 
 export interface tokenInfoTypes extends JwtPayload {

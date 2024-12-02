@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {tokenInfoTypes, UserRoles, UserSliceSchema} from "./UserSliceSchema";
+import {cartItem, tokenInfoTypes, UserRoles, UserSliceSchema} from "./UserSliceSchema";
 import {USER_ACCESS_TOKEN_KEY} from "@/const/localStorage";
 import {jwtDecode} from "jwt-decode";
 import {UserData} from "../services/loginByUsername";
@@ -8,7 +8,9 @@ import {UserData} from "../services/loginByUsername";
 const initialState: UserSliceSchema = {
     isAuth: false,
     role: UserRoles.GUEST,
-    searchIsOpen: false
+    searchIsOpen: false,
+    cartItems: [],
+    activeCartCheckboxes: {},
 };
 
 export const UserSlice = createSlice({
@@ -40,7 +42,31 @@ export const UserSlice = createSlice({
         },
         setSearchIsOpen: (state: UserSliceSchema, action: PayloadAction<boolean>) => {
             state.searchIsOpen = action.payload
-        }
+        },
+        setCartItems: (state: UserSliceSchema, action: PayloadAction<cartItem[]>) => {
+            state.cartItems = action.payload;
+        },
+        clearCartItems: (state: UserSliceSchema) => {
+            state.cartItems = []
+        },
+        toggleActiveCartCheckbox: (state: UserSliceSchema, action: PayloadAction<number>) => {
+            if (state.activeCartCheckboxes[action.payload]) {
+                state.activeCartCheckboxes[action.payload] = !state.activeCartCheckboxes[action.payload]
+            } else {
+                state.activeCartCheckboxes[action.payload] = true
+            }
+        },
+        toggleAllActiveCartCheckboxes: (state: UserSliceSchema) => {
+            const totalOfActiveCheckboxes = Object.keys(state.activeCartCheckboxes)
+                .reduce((acc, currentValue) => {
+                    if (state.activeCartCheckboxes[+currentValue]) return acc += 1;
+                    return acc
+                }, 0)
+
+
+            if (totalOfActiveCheckboxes === state.cartItems.length) {state.activeCartCheckboxes = []}
+            else {state.cartItems.forEach(cartItem => state.activeCartCheckboxes[cartItem.id] = true)}
+        },
     }
 });
 
