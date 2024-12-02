@@ -74,7 +74,6 @@ export const GoodReviews = (props: GoodReviewsProps) => {
             <MainContainer>
                 <div className={cls.GoodReviewsInner}>
                     <h3 className={cls.GoodReviewsTitle}>Отзывы</h3>
-                    <p className={cls.GoodReviewCount}>Всего: {reviews.length} {reviews.length < 5 && reviews.length > 0 ? 'отзыва' : 'отзывов'}</p>
 
                     <div className={cls.GoodReviewRating}>
                         <p className={cls.GoodReviewRatingTitle}>Средняя оценка: {averageRating(reviews) || 0}</p>
@@ -87,18 +86,7 @@ export const GoodReviews = (props: GoodReviewsProps) => {
                     </div>
 
                     <form className={cls.GoodReviewsForm} onSubmit={handleSubmit(onSubmit)}>
-                        {/*<h2 className={cls.GoodReviewsFormTitle}>Добавить новый отзыв</h2>*/}
-                        <label className={cls.TextAreaTitle} htmlFor='reviewDescription'>Оставьте отзыв о
-                            товаре:</label>
-
-                        <label className={cls.RatingTitle}>Ваша оценка:</label>
-                        <Rating
-                            readonly={!isAuth}
-                            className={classNames(cls.GoodReviewFormRatingStar, {[cls.RatingDisabled]: !isAuth}, [])}
-                            onClick={handleRating}
-                            initialValue={rating}
-                            size={25}
-                        />
+                        <label className={classNames(cls.TextAreaTitle, {[cls.TextDisabled]: !isAuth}, [])} htmlFor='reviewDescription'>Добавить отзыв:</label>
 
                         <div className={cls.TextAreaWrapper}>
                             <TextArea
@@ -111,7 +99,20 @@ export const GoodReviews = (props: GoodReviewsProps) => {
                             {errors.reviewDescription && <span className={cls.TextAreaErrorText}>Поле должно быть заполнено</span>}
                         </div>
 
-                        <Button disabled={!isAuth} type={"submit"} className={cls.GoodReviewsFormButton} >Отправить</Button>
+                        <div className={cls.RatingBottomLine}>
+                            <div className={cls.YourRating}>
+                                <label className={cls.RatingTitle}>Оценка:</label>
+                                <Rating
+                                    readonly={!isAuth}
+                                    className={classNames(cls.GoodReviewFormRatingStar, {[cls.RatingDisabled]: !isAuth}, [])}
+                                    onClick={handleRating}
+                                    initialValue={rating}
+                                    size={25}
+                                />
+                            </div>
+
+                            <Button disabled={!isAuth} type={"submit"} className={cls.GoodReviewsFormButton}>Отправить</Button>
+                        </div>
                     </form>
 
                     <div className={cls.GoodWrapper}>

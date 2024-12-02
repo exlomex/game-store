@@ -7,8 +7,7 @@
     .GoodDescriptionInner {
         display: flex;
         align-items: flex-start;
-        justify-content: space-between;
-        gap: 50px 30px;
+        gap: 50px 40px;
         flex-wrap: wrap;
 
         .GoodImage {
@@ -82,10 +81,27 @@
             }
         }
         .GoodDescriptionRightBox {
-            width: 280px;
             background-color: var(--main-skeleton);
-            padding: 35px 40px;
             border-radius: 8px;
+
+            .GoodSpecs {
+                .GoodSpecTitle {
+                    font-size: 24px;
+                    margin-bottom: 15px;
+                }
+
+                .GoodSpecTypography {
+                    span {
+                        font-weight: 500;
+                    }
+                    font-weight: bold;
+                    margin-bottom: 15px;
+
+                    &:last-child {
+                        margin-bottom: 25px;
+                    }
+                }
+            }
 
             .GoodDescriptionPrice {
                 font-weight: 500;

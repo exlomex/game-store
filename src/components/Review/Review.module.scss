@@ -1,10 +1,10 @@
 .Review {
-    width: 90%;
+    width: 100%;
     margin-bottom: 25px;
     border-radius: 8px;
-    padding: 25px 20px;
-    background-color: var(--field);
-    border: 1px solid var(--main-skeleton);
+    padding: 20px 20px;
+    background-color: var(--white);
+    border: 2px solid var(--light-grey);
 
     &.ReviewMobile {
         .ReviewTopLine {
@@ -19,7 +19,7 @@
     .ReviewTopLine {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
         margin-bottom: 13px;
         font-weight: 300;
         color: var(--dark-grey);

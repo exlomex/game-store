@@ -9,7 +9,7 @@
 
             .GoodReviewRating {
                 .GoodReviewRatingTitle {
-                    font-size: 0.889em;
+                    font-size: 1em;
                 }
 
             }
@@ -19,17 +19,10 @@
     .GoodReviewsInner {
 
         .GoodReviewsTitle {
-            font-size: 1.778em;
+            font-size: 32px;
             margin-bottom: 25px;
             font-weight: 600;
-            color: var(--dark-grey)
-        }
-
-        .GoodReviewCount {
-            font-weight: 400;
-            color: var(--dark-grey);
-            font-size: 1.111em;
-            margin-bottom: 25px;
+            color: var(--dark-blue)
         }
 
         .GoodReviewRating {
@@ -50,15 +43,30 @@
         .GoodReviewsForm {
             margin-bottom: 25px;
 
+            .RatingBottomLine {
+                margin-top: 15px;
+                display: flex;
+                gap: 0 20px;
+                align-items: center;
+
+                .YourRating {
+                    display: flex;
+                    align-items: center;
+                    gap: 0 10px;
+
+                    span {
+                        height: 25px;
+                    }
+                }
+            }
+
             .RatingTitle {
                 display: block;
                 font-weight: 300;
                 color: var(--light-grey);
-                margin-bottom: 10px;
             }
 
             .GoodReviewFormRatingStar {
-                margin-bottom: 20px;
 
                 &.RatingDisabled {
                     cursor: auto;
@@ -75,7 +83,11 @@
             }
 
             .TextAreaTitle {
-                color: var(--dark-grey);
+                &.TextDisabled {
+                    color: var(--light-grey);
+                }
+
+                color: var(--dark-blue);
                 display: block;
                 font-size: 1.556em;
                 font-weight: 600;
@@ -94,10 +106,6 @@
                     margin-top: 5px;
                     color: var(--red);
                 }
-            }
-
-            .GoodReviewsFormButton {
-                margin-top: 20px;
             }
         }
     }

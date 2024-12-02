@@ -5,6 +5,7 @@ import {MainContainer} from "@/components/MainContainer";
 import {Button} from "@/components/ui/Button";
 import {useSelector} from "react-redux";
 import {getUserAuth} from "@/store/selectors/getUserValues";
+import {AllConsoles, AllGenres} from "@/store/reducers/FilterSliceSchema";
 
 interface GoodDescriptionProps {
     className?: string;
@@ -14,7 +15,7 @@ interface GoodDescriptionProps {
 export const GoodDescription = (props: GoodDescriptionProps) => {
     const { className, goodId } = props;
 
-    const {data, isLoading, error} = useFetchGoodById({id: goodId})
+    const {data} = useFetchGoodById({id: goodId})
 
     // const cartIds = useSelector(getUserCartIds)
 
@@ -25,6 +26,24 @@ export const GoodDescription = (props: GoodDescriptionProps) => {
     // const cartIdByGoodId = useSelector(getUserCartIdByGoodId(goodId))
 
     // const {onGoodButtonClickHandler} = useGoodButtonHandler()
+
+    type specificationsInterface = {
+        [key in (AllConsoles | AllGenres)]: string;
+    };
+
+    const specificationsMap: { [key in 'genre' | 'console']: Partial<specificationsInterface> } = {
+        genre: {
+            'FIGHTING': 'Файтинг',
+            'SPORT': 'Спорт'
+        },
+        console: {
+            'PC': 'ПК',
+            'PS5': 'PS5',
+            'NINTENDO': 'Nintendo Switch',
+            'PS4': 'PS4',
+            'XBOX': 'Xbox',
+        }
+    }
 
     if (!data) return (
         <></>
@@ -42,6 +61,12 @@ export const GoodDescription = (props: GoodDescriptionProps) => {
                     }
 
                     <div className={cls.GoodDescriptionRightBox}>
+                        <div className={cls.GoodSpecs}>
+                            <p className={cls.GoodSpecTitle}>Характеристики: </p>
+                            <p className={cls.GoodSpecTypography}><span>Жанр: </span>{specificationsMap.genre[data.genre]}</p>
+                            <p className={cls.GoodSpecTypography}><span>Платформа: </span> {specificationsMap.console[data.console]}</p>
+                        </div>
+
                         <p className={cls.GoodDescriptionPrice}>{data.price} ₽</p>
                         <Button disabled={!isAuth}>{isGoodInCartByIds ? 'Удалить из корзины' : 'В корзину'}</Button>
                         {/*<Button onClick={onGoodButtonClickHandler(isGoodInCartByIds, goodId, cartIdByGoodId)} disabled={!isAuth}>{isGoodInCartByIds ? 'Удалить из корзины' : 'В корзину'}</Button>*/}

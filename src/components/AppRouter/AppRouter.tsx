@@ -7,6 +7,7 @@ import {CategoryPage} from "@/pages/CategoryPage/CategoryPage";
 import React from "react";
 import {LoginPage} from "@/pages/LoginPage";
 import {RegisterPage} from "@/pages/RegisterPage";
+import {AboutUsPage} from "@/pages/AboutUsPage";
 
 export const AppRouter = () => (
         <Routes>
@@ -23,6 +24,9 @@ export const AppRouter = () => (
             }/>
             <Route path="/goods/:id" element={
                 <GoodPage/>
+            }/>
+            <Route path="/aboutUs" element={
+                <AboutUsPage/>
             }/>
             <Route path="/login" element={
                 <RequireAuth roles={[UserRoles.GUEST]}>

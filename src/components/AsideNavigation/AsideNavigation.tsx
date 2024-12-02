@@ -7,6 +7,7 @@ import {ReactComponent as GameIcon} from "@/assets/gamesIcon.svg";
 import {ReactComponent as PromoIcon} from "@/assets/promoIcon.svg";
 import {ReactComponent as CartIcon} from "@/assets/cartIcon.svg";
 import {ReactComponent as OrdersIcon} from "@/assets/ordersIcon.svg";
+import {ReactComponent as InfoIcon} from "@/assets/infoIcon.svg";
 import {Link} from "react-router-dom";
 
 interface AsideNavigationProps {
@@ -22,6 +23,7 @@ export const AsideNavigation = (props: AsideNavigationProps) => {
         {title: 'Промокоды', icon: <PromoIcon/>, to: '/promo'},
         {title: 'Корзина', icon: <CartIcon/>, to: '/cart'},
         {title: 'Заказы', icon: <OrdersIcon/>, to: '/orders'},
+        {title: 'О нас', icon: <InfoIcon/>, to: '/aboutUs'},
     ]
 
     return (

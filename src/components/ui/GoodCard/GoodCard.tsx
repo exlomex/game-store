@@ -13,7 +13,7 @@ interface GoodCardProps {
 export const GoodCard = (props: GoodCardProps) => {
     const { className, title, price, image, id } = props;
     return (
-        <Link to={`goods/${id}`} className={classNames(cls.GoodCard, {}, [className])}>
+        <Link to={`/goods/${id}`} className={classNames(cls.GoodCard, {}, [className])}>
             { image
                 ? <img src={image} alt={`${title}`} className={cls.GoodImage}/>
                 : <div className={classNames(cls.GoodImage, {}, [cls.GoodWithoutImage])}>{title}</div>
