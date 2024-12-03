@@ -1,0 +1,14 @@
+.PromoContent {
+    .PromoInner {
+
+    }
+}
+
+
+@media screen and (max-width: 767px) {
+    .PromoContent {
+        .PromoInner {
+            padding-left: var(--aside-collapsed);
+        }
+    }
+}

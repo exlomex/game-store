@@ -9,6 +9,8 @@ import {LoginPage} from "@/pages/LoginPage";
 import {RegisterPage} from "@/pages/RegisterPage";
 import {AboutUsPage} from "@/pages/AboutUsPage";
 import {CartPage} from "@/pages/CartPage";
+import {PromoPage} from "@/pages/PromoPage";
+import {MyOrdersPage} from "@/pages/MyOrdersPage";
 
 export const AppRouter = () => (
         <Routes>
@@ -45,18 +47,22 @@ export const AppRouter = () => (
                     <CartPage/>
                 </RequireAuth>
             }/>
+            <Route path="/promocodes" element={
+                <RequireAuth roles={[UserRoles.USER, UserRoles.ADMIN]}>
+                    <PromoPage/>
+                </RequireAuth>
+            }/>
 
             {/*<Route path="/order" element={*/}
             {/*    <RequireAuth roles={[UserRoles.ADMIN, UserRoles.USER]}>*/}
             {/*        <OrderPage/>*/}
             {/*    </RequireAuth>*/}
             {/*}/>*/}
-            {/*<Route path="/orders" element={*/}
-            {/*    <RequireAuth roles={[UserRoles.ADMIN, UserRoles.USER]}>*/}
-            {/*        <MyOrdersPage/>*/}
-            {/*    </RequireAuth>*/}
-            {/*}/>*/}
-            {/*<Route path="/" element={}/>*/}
+            <Route path="/orders" element={
+                <RequireAuth roles={[UserRoles.ADMIN, UserRoles.USER]}>
+                    <MyOrdersPage/>
+                </RequireAuth>
+            }/>
             <Route path="*" element={<Navigate to="/404page" replace />}/>
         </Routes>
 );

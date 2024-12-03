@@ -1,0 +1,57 @@
+.OrderedGoodsList {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--light-grey);
+    width: 100%;
+
+    .orderDate {
+        font-size: 1.111em;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+
+    .OrderPrice {
+        span {
+            font-weight: 400;
+        }
+
+        margin-bottom: 20px;
+    }
+
+    .GoodsList {
+        .GoodWrapper {
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 20px 20px;
+            display: flex;
+
+            .GoodCount {
+
+            }
+
+            .GoodTitle {
+                font-size: 0.889em;
+                font-weight: 400;
+                span {
+                    margin-right: 5px;
+                }
+
+            }
+
+            .GoodPrice {
+                font-size: 0.889em;
+                font-weight: 400;
+                span {
+                    margin-right: 5px;
+                }
+            }
+
+            .GoodQuantity {
+                font-size: 0.889em;
+                font-weight: 400;
+                span {
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+}

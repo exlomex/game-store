@@ -21,6 +21,7 @@ export interface UserSliceSchema {
     cartItems: cartItem[]
     activeCartCheckboxes: Record<number, boolean>;
     isAsideCollapsed: boolean;
+    selectedPromo: string;
 }
 
 export interface tokenInfoTypes extends JwtPayload {

@@ -65,7 +65,7 @@ export const AsideNavigation = (props: AsideNavigationProps) => {
     const asideMenuItems: {title: string, icon: ReactElement, to: string}[] = [
         {title: 'Главная', icon: <HomeIcon/>, to: '/'},
         {title: 'Игры', icon: <GameIcon/>, to: '/goods/search'},
-        {title: 'Промокоды', icon: <PromoIcon/>, to: '/promo'},
+        {title: 'Промокоды', icon: <PromoIcon/>, to: '/promocodes'},
         {
             title: 'Корзина',
             icon: <div className={cls.CartWrapper}>

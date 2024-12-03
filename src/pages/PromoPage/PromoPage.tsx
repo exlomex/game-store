@@ -1,21 +1,20 @@
 import { classNames } from '@/lib/classNames';
-import cls from './MainPage.module.scss';
-import {Header} from "@/components/Header";
+import cls from './PromoPage.module.scss';
 import {AsideNavigation} from "@/components/AsideNavigation";
+import {Header} from "@/components/Header";
 import {MainLayout} from "@/components/layouts/MainLayout";
-import {MainContent} from "@/components/MainContent";
+import {PromoContent} from "@/components/PromoContent/PromoContent";
 
-interface MainPageProps {
+interface PromoPageProps {
     className?: string;
 }
 
-export const MainPage = (props: MainPageProps) => {
+export const PromoPage = (props: PromoPageProps) => {
     const { className } = props;
-
     return (
-        <div className={classNames(cls.MainPage, {}, [className])}>
+        <div className={classNames(cls.PromoPage, {}, [className])}>
             <MainLayout AsideMenu={<AsideNavigation/>} Header={<Header/>} Content={
-                <MainContent/>
+                <PromoContent/>
             }/>
         </div>
     )

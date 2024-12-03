@@ -11,7 +11,8 @@ const initialState: UserSliceSchema = {
     searchIsOpen: false,
     cartItems: [],
     activeCartCheckboxes: {},
-    isAsideCollapsed: false
+    isAsideCollapsed: false,
+    selectedPromo: ''
 };
 
 export const UserSlice = createSlice({
