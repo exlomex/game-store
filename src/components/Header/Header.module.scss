@@ -10,6 +10,13 @@
     position: relative;
     z-index: 100;
 
+    .HeaderUpperLine {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
     .Navigation {
         display: flex;
         align-items: center;
@@ -59,8 +66,7 @@
 @media screen and (max-width: 900px) {
     .Header {
         .Navigation {
-            font-size: 16px;
-            gap: 20px;
+            gap: 25px;
             flex-wrap: wrap;
 
             .NavigationItem {
@@ -78,12 +84,30 @@
 
 @media screen and (max-width: 768px) {
     .Header {
-        max-height: 210px;
-        height: 210px;
+        padding: 20px 30px;
+
+        max-height: var(--header-mobile);
+        height: var(--header-mobile);
 
         display: flex;
         flex-direction: column;
-        gap: 25px;
+        justify-content: flex-start;
+        gap: 20px;
         align-items: start;
+
+        .HeaderUpperLine {
+            .Logo svg {
+                width: 80%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .Header {
+        .Navigation {
+            font-size: 16px;
+            gap: 12px;
+        }
     }
 }

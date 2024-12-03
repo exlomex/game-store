@@ -10,6 +10,7 @@ import {UserSliceActions} from "@/store/reducers/UserSlice";
 import {AllConsoles} from "@/store/reducers/FilterSliceSchema";
 import {FilterSliceActions} from "@/store/reducers/FilterSlice";
 import {getFilterConsole} from "@/store/selectors/getFilterValues";
+import {useMediaQuery} from "react-responsive";
 
 interface HeaderProps {
     className?: string;
@@ -25,7 +26,7 @@ export const Header = (props: HeaderProps) => {
         { title: 'PS4', titleKey: 'PS4' },
         { title: 'PS5', titleKey: 'PS5' },
         { title: 'Xbox', titleKey: 'XBOX' },
-        { title: 'Nintendo Switch', titleKey: 'NINTENDO' },
+        { title: 'Nintendo', titleKey: 'NINTENDO' },
     ]
 
     const currentConsole = useSelector(getFilterConsole)
@@ -41,22 +42,52 @@ export const Header = (props: HeaderProps) => {
         dispatch(UserSliceActions.logout())
     }
 
+    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 767px)' })
+
     return (
         <header className={classNames(cls.Header, {}, [className])}>
-            <Link to={'/'} className={cls.Logo}>
-                <LogoIcon/>
-            </Link>
+            {
+                isTabletOrMobile ? (
+                    <>
+                        <div className={cls.HeaderUpperLine}>
+                            <Link to={'/'} className={cls.Logo}>
+                                <LogoIcon/>
+                            </Link>
 
-            <nav className={cls.Navigation}>
-                {navItems.map((item, index) => (
-                    <a
-                        className={classNames(cls.NavigationItem, {[cls.Active]: item.titleKey === currentConsole}, [])}
-                        key={index}
-                        onClick={onNavigationItemClickHandler(item.titleKey)}>{item.title}</a>
-                ))}
-            </nav>
+                            {!isAuth ? (<Link to={'/login'} state={{from: window.location.pathname}}
+                                              className={cls.HeaderAuth}>Войти</Link>) :
+                                <p className={cls.HeaderAuth} onClick={onLogoutClickHandler}>Выйти</p>}
+                        </div>
 
-            {!isAuth ? (<Link to={'/login'} state={{ from: window.location.pathname }} className={cls.HeaderAuth}>Войти</Link>) : <p className={cls.HeaderAuth} onClick={onLogoutClickHandler}>Выйти</p>}
+                        <nav className={cls.Navigation}>
+                            {navItems.map((item, index) => (
+                                <a
+                                    className={classNames(cls.NavigationItem, {[cls.Active]: item.titleKey === currentConsole}, [])}
+                                    key={index}
+                                    onClick={onNavigationItemClickHandler(item.titleKey)}>{item.title}</a>
+                            ))}
+                        </nav>
+                    </>
+                ) : (
+                    <>
+                        <Link to={'/'} className={cls.Logo}>
+                            <LogoIcon/>
+                        </Link>
+
+                        <nav className={cls.Navigation}>
+                            {navItems.map((item, index) => (
+                                <a
+                                    className={classNames(cls.NavigationItem, {[cls.Active]: item.titleKey === currentConsole}, [])}
+                                    key={index}
+                                    onClick={onNavigationItemClickHandler(item.titleKey)}>{item.title}</a>
+                            ))}
+                        </nav>
+
+                        {!isAuth ? (<Link to={'/login'} state={{ from: window.location.pathname }} className={cls.HeaderAuth}>Войти</Link>) : <p className={cls.HeaderAuth} onClick={onLogoutClickHandler}>Выйти</p>}
+                    </>
+                )
+            }
+
         </header>
     )
 };
