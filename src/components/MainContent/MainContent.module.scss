@@ -2,6 +2,15 @@
     height: 100%;
     overflow: auto;
 
+    &.MainMobile {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    &.AsideCollapsed {
+        padding-left: 50px;
+    }
+
     .ContentInner {
         .ContentMainBox {
             margin-bottom: 40px;
@@ -25,7 +34,7 @@
             p {
                 color: var(--white);
                 position: relative;
-                z-index: 10000;
+                z-index: 1000;
                 line-height: 130%;
                 max-width: 390px;
                 font-size: 40px;
@@ -40,6 +49,46 @@
             display: flex;
             gap: 30px;
             flex-wrap: wrap;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .MainContent {
+        .ContentInner {
+            .ContentMainBox {
+                padding: 30px;
+                display: flex;
+                align-items: center;
+                max-height: 400px;
+                height: calc(39vw);
+            }
+
+            .ContentGoods {
+                align-items: center;
+
+                a {
+                    width: 100%;
+                }
+
+                img {
+                    max-height: 100%;
+                    height: 42vw;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 490px) {
+    .MainContent {
+        .ContentInner {
+            .ContentMainBox {
+                p {
+                    font-size: 20px;
+                }
+            }
         }
     }
 }

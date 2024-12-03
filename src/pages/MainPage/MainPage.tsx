@@ -4,6 +4,7 @@ import {Header} from "@/components/Header";
 import {AsideNavigation} from "@/components/AsideNavigation";
 import {MainLayout} from "@/components/layouts/MainLayout";
 import {MainContent} from "@/components/MainContent";
+import {useMediaQuery} from "react-responsive";
 
 interface MainPageProps {
     className?: string;
@@ -11,6 +12,7 @@ interface MainPageProps {
 
 export const MainPage = (props: MainPageProps) => {
     const { className } = props;
+
     return (
         <div className={classNames(cls.MainPage, {}, [className])}>
             <MainLayout AsideMenu={<AsideNavigation/>} Header={<Header/>} Content={

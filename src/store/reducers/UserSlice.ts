@@ -11,6 +11,7 @@ const initialState: UserSliceSchema = {
     searchIsOpen: false,
     cartItems: [],
     activeCartCheckboxes: {},
+    isAsideCollapsed: false
 };
 
 export const UserSlice = createSlice({
@@ -67,6 +68,12 @@ export const UserSlice = createSlice({
             if (totalOfActiveCheckboxes === state.cartItems.length) {state.activeCartCheckboxes = []}
             else {state.cartItems.forEach(cartItem => state.activeCartCheckboxes[cartItem.id] = true)}
         },
+        setIsAsideCollapsed: (state: UserSliceSchema, action: PayloadAction<boolean>) => {
+            state.isAsideCollapsed = action.payload
+        },
+        toggleIsAsideCollapsed: (state: UserSliceSchema) => {
+            state.isAsideCollapsed = !state.isAsideCollapsed
+        }
     }
 });
 

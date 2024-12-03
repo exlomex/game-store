@@ -20,6 +20,7 @@ export interface UserSliceSchema {
     searchIsOpen: boolean;
     cartItems: cartItem[]
     activeCartCheckboxes: Record<number, boolean>;
+    isAsideCollapsed: boolean;
 }
 
 export interface tokenInfoTypes extends JwtPayload {

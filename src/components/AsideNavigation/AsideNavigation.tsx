@@ -1,19 +1,21 @@
 import { classNames } from '@/lib/classNames';
 import cls from './AsideNavigation.module.scss';
 import {SearchGood} from "@/components/SearchGood";
-import {ReactElement, useEffect} from "react";
+import {ReactElement, useEffect, useState} from "react";
 import {ReactComponent as HomeIcon} from "@/assets/homeIcon.svg";
 import {ReactComponent as GameIcon} from "@/assets/gamesIcon.svg";
 import {ReactComponent as PromoIcon} from "@/assets/promoIcon.svg";
 import {ReactComponent as CartIcon} from "@/assets/cartIcon.svg";
 import {ReactComponent as OrdersIcon} from "@/assets/ordersIcon.svg";
 import {ReactComponent as InfoIcon} from "@/assets/infoIcon.svg";
+import {ReactComponent as LeftArrowIcon} from "@/assets/leftArrowIcon.svg";
 import {Link} from "react-router-dom";
 import {useAppDispatch} from "@/hooks/useAppDispatch";
 import {useSelector} from "react-redux";
-import {getUserAuth, getUserCartIds} from "@/store/selectors/getUserValues";
+import {getUserAuth, getUserCartIds, getUserIsAsideCollapsed} from "@/store/selectors/getUserValues";
 import {UserSliceActions} from "@/store/reducers/UserSlice";
 import {useLazyFetchCartItems} from "@/components/AsideNavigation/api/fetchCartItems";
+import {useMediaQuery} from "react-responsive";
 
 interface AsideNavigationProps {
     className?: string;
@@ -41,6 +43,19 @@ export const AsideNavigation = (props: AsideNavigationProps) => {
 
     const CartItemsFromState = useSelector(getUserCartIds)
 
+    const isDesktopOrLaptop = useMediaQuery({
+        query: '(min-width: 768px)'
+    })
+    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 767px)' })
+
+    const collapsed = useSelector(getUserIsAsideCollapsed)
+
+    useEffect(() => {
+        if (isDesktopOrLaptop && collapsed) {
+            dispatch(UserSliceActions.setIsAsideCollapsed(false))
+        }
+    }, [isDesktopOrLaptop, collapsed]);
+
     const asideMenuItems: {title: string, icon: ReactElement, to: string}[] = [
         {title: 'Главная', icon: <HomeIcon/>, to: '/'},
         {title: 'Игры', icon: <GameIcon/>, to: '/goods/search'},
@@ -58,8 +73,17 @@ export const AsideNavigation = (props: AsideNavigationProps) => {
     ]
 
     return (
-        <aside className={classNames(cls.AsideNavigation, {}, [className])}>
-            <SearchGood/>
+        <aside className={classNames(cls.AsideNavigation, {[cls.asideCollapsed]: collapsed, [cls.asideMobile]: isTabletOrMobile}, [className])}>
+            {
+                isDesktopOrLaptop ?
+                    (<SearchGood/>)
+                    : (
+                        <div className={cls.AsideUpperLine}>
+                            {!collapsed && <SearchGood/>}
+                            <span className={cls.CollapsedButton} onClick={() => dispatch(UserSliceActions.toggleIsAsideCollapsed())}> <LeftArrowIcon/> </span>
+                        </div>
+                    )
+            }
 
             <nav className={cls.AsideNavigationItems}>
                 {asideMenuItems.map((item, index) => (

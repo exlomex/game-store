@@ -12,6 +12,7 @@
 
     .Navigation {
         display: flex;
+        align-items: center;
         gap: 0 40px;
         font-weight: 400;
         font-size: 18px;
@@ -52,5 +53,34 @@
         &:hover {
             color: var(--grey);
         }
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .Header {
+        .Navigation {
+            font-size: 16px;
+            gap: 20px;
+        }
+
+        .HeaderAuth {
+            font-size: 20px;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .Header {
+        .Navigation {
+            gap: 15px;
+        }
+
+        max-height: 210px;
+        height: 210px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        align-items: start;
     }
 }

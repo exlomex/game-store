@@ -39,6 +39,11 @@ export const getUserActiveCartCheckboxes = createSelector(
     (user: UserSliceSchema) => user.activeCartCheckboxes
 );
 
+export const getUserIsAsideCollapsed = createSelector(
+    getUser,
+    (user: UserSliceSchema) => user.isAsideCollapsed
+);
+
 export const getUserActiveCartCheckboxesArray = createSelector(
     getUser,
     (user: UserSliceSchema) => {
