@@ -25,7 +25,7 @@ export const RequireAuth = (props: RequireAuthProps) => {
     if (!isAuth && !(roles.includes(CurrentUserRole))) {
 
         return (
-            <Navigate to={'/'} state={{ from: location }} replace/>
+            <Navigate to={'/login'} state={{ from: location }} replace/>
         )
     }
     return (
