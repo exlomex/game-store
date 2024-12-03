@@ -8,6 +8,7 @@ import React from "react";
 import {LoginPage} from "@/pages/LoginPage";
 import {RegisterPage} from "@/pages/RegisterPage";
 import {AboutUsPage} from "@/pages/AboutUsPage";
+import {CartPage} from "@/pages/CartPage";
 
 export const AppRouter = () => (
         <Routes>
@@ -39,6 +40,12 @@ export const AppRouter = () => (
                     <RegisterPage/>
                 </RequireAuth>
             }/>
+            <Route path="/cart" element={
+                <RequireAuth roles={[UserRoles.USER, UserRoles.ADMIN]}>
+                    <CartPage/>
+                </RequireAuth>
+            }/>
+
             {/*<Route path="/order" element={*/}
             {/*    <RequireAuth roles={[UserRoles.ADMIN, UserRoles.USER]}>*/}
             {/*        <OrderPage/>*/}

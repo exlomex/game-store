@@ -1,0 +1,1 @@
+export {CartGoodCard} from './CartGoodCard'

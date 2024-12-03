@@ -1,0 +1,121 @@
+.CartGoodCard {
+    border-bottom: 1px solid var(--light-blue);
+
+    display: flex;
+    padding: 14px 0;
+    gap: 15px 25px;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .LeftContent {
+        display: flex;
+        gap: 30px;
+        align-items: center;
+
+        .GoodCardImageContainer {
+            display: flex;
+            gap: 0 25px;
+            flex-direction: column;
+
+            .GoodCardImage {
+                border-radius: 8px;
+                object-fit: cover;
+                height: 80px;
+                width: 150px;
+            }
+
+            div.GoodCardImage {
+                background-color: var(--grey);
+            }
+        }
+
+        .ContentGoodDescription {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
+
+    .RightContent {
+        gap: 30px;
+        display: flex;
+        align-items: center;
+
+        .Counter {
+            padding: 0 12px;
+            border-radius: 24px;
+            background-color: var(--active-field);
+            border: 1px solid var(--grey);
+            width: 100px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .CounterSvg {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 15px;
+                aspect-ratio: 1 / 1;
+                cursor: pointer;
+                svg path {
+                    stroke: var(--dark-blue);
+                    stroke-width: 1;
+                }
+
+                &.disabled {
+                    svg path {
+                        stroke: var(--light-grey);
+                    }
+                    pointer-events: none;
+                }
+            }
+
+            .CounterCount {
+                font-size: 0.889em;
+            }
+        }
+
+        .BottomLine {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+
+            .DeleteButton {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid var(--light-grey);
+                width: 30px;
+                height: 30px;
+                flex-shrink: 0;
+                cursor: pointer;
+                border-radius: 8px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 630px) {
+    .CartGoodCard {
+        .RightContent {
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .LeftContent {
+            flex-wrap: wrap;
+
+            .GoodCardImageContainer {
+                width: 100%;
+
+                .GoodCardImage {
+                    width: 100%;
+                    height: 40vw;
+                }
+            }
+        }
+    }
+}

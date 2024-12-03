@@ -1,0 +1,65 @@
+.EmptyCartDescription {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .EmptyCartTitle {
+        font-size: 1.111em;
+        margin-bottom: 30px;
+    }
+
+    .EmptyCartIcon {
+        margin-bottom: 30px;
+    }
+
+    .EmptyCartExtraText {
+        font-size: 0.889em;
+        font-weight: 300;
+        margin-bottom: 15px;
+    }
+}
+
+.CartDescription {
+    margin-top: 30px;
+    .CartDescriptionUpperLine {
+
+        display: flex;
+        justify-content: space-between;
+
+        .RemoveButton {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0 10px;
+
+            span {
+                font-weight: 400;
+                color: var(--dark-grey);
+            }
+        }
+
+        .SelectAllCheckbox {
+            display: flex;
+            align-items: center;
+            gap: 0 12px;
+
+            span {
+                font-weight: 400;
+            }
+        }
+    }
+
+    .CartBottomLine {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .CartDescription {
+        padding-left: var(--aside-collapsed);
+    }
+}
