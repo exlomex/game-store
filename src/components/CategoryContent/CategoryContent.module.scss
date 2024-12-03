@@ -6,7 +6,12 @@
         .CategoryFilters {
             display: flex;
             align-items: center;
-            gap: 0 30px;
+            gap: 20px 15px;
+            flex-wrap: wrap;
+
+            svg {
+                flex-shrink: 0;
+            }
         }
 
         .CategoryGoods {
@@ -14,6 +19,29 @@
             display: flex;
             gap: 30px;
             flex-wrap: wrap;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .CategoryContent {
+        .CategoryInner {
+            padding-left: var(--aside-collapsed);
+
+            .CategoryFilters {
+                justify-content: start;
+            }
+
+            .CategoryGoods {
+                a {
+                    width: 100%;
+
+                    img {
+                        width: 100%;
+                        height: 42vw;
+                    }
+                }
+            }
         }
     }
 }

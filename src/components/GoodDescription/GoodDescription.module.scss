@@ -7,7 +7,7 @@
     .GoodDescriptionInner {
         display: flex;
         align-items: flex-start;
-        gap: 50px 40px;
+        gap: 30px 40px;
         flex-wrap: wrap;
 
         .GoodImage {
@@ -107,6 +107,25 @@
                 font-weight: 500;
                 font-size: 1.333em;
                 margin-bottom: 25px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .GoodDescription {
+        .GoodDescriptionInner, .GoodDescriptionTitle {
+            padding-left: var(--aside-collapsed);
+        }
+
+        .GoodDescriptionTitle {
+            font-size: 30px;
+        }
+
+        .GoodDescriptionInner {
+            .GoodImage {
+                width: 100%;
+                height: 42vw;
             }
         }
     }

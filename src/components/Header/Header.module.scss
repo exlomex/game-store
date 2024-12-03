@@ -61,6 +61,13 @@
         .Navigation {
             font-size: 16px;
             gap: 20px;
+            flex-wrap: wrap;
+
+            .NavigationItem {
+                &::after {
+                    padding: 0 17px;
+                }
+            }
         }
 
         .HeaderAuth {
@@ -71,10 +78,6 @@
 
 @media screen and (max-width: 768px) {
     .Header {
-        .Navigation {
-            gap: 15px;
-        }
-
         max-height: 210px;
         height: 210px;
 

@@ -110,3 +110,29 @@
         }
     }
 }
+
+@media screen and (max-width: 768px) {
+    .GoodReviews {
+        margin-top: 0;
+
+        .GoodReviewsInner {
+            padding-left: var(--aside-collapsed);
+
+            .GoodReviewRating {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .GoodReviewsTitle {
+                font-size: 30px;
+            }
+
+            .GoodReviewsForm {
+                .RatingBottomLine {
+                    gap: 20px;
+                    flex-wrap: wrap;
+                }
+            }
+        }
+    }
+}

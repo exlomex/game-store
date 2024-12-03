@@ -19,3 +19,13 @@
         }
     }
 }
+
+@media screen and (max-width: 768px) {
+    .AboutUsInner {
+        p, li {
+            font-size: 18px;
+        }
+
+        padding-left: var(--aside-collapsed);
+    }
+}

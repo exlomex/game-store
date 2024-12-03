@@ -77,10 +77,16 @@
 }
 
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 768px) {
     .RegisterForm {
+        padding-left: var(--aside-collapsed);
+
         .RegisterFormForma {
-            width: 100%;
+            .InputButton {
+                margin-top: 0;
+            }
         }
+
+
     }
 }
