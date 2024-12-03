@@ -56,6 +56,12 @@ export const AsideNavigation = (props: AsideNavigationProps) => {
         }
     }, [isDesktopOrLaptop, collapsed]);
 
+    useEffect(() => {
+        if (isTabletOrMobile) {
+            dispatch(UserSliceActions.setIsAsideCollapsed(true))
+        }
+    }, []);
+
     const asideMenuItems: {title: string, icon: ReactElement, to: string}[] = [
         {title: 'Главная', icon: <HomeIcon/>, to: '/'},
         {title: 'Игры', icon: <GameIcon/>, to: '/goods/search'},

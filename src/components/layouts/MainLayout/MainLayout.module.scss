@@ -14,3 +14,13 @@
         }
     }
 }
+
+@media screen and (max-width: 768px) {
+    .MainLayout {
+        .LayoutSplit {
+            .LayoutContent {
+                height: calc(100vh - var(--header-mobile));
+            }
+        }
+    }
+}

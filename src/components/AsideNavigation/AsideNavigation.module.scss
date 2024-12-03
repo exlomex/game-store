@@ -5,13 +5,13 @@
     background-color: var(--dark-blue);
     padding: 30px;
     overflow: auto;
-    transition: width .2s ease-out, padding .2s ease-out;
+    //transition: width .2s ease-out, padding .2s ease-out;
 
     &.asideMobile {
         position: absolute;
         z-index: 1000000;
         max-width: 100%;
-        max-height: 100vh;
+        height: calc(100% - var(--header-mobile));
     }
 
     &.asideCollapsed {
