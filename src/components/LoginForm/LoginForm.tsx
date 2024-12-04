@@ -7,6 +7,8 @@ import {Input} from "@/components/ui/Input";
 import {InputTypes} from "@/components/ui/Input/Input";
 import {loginByUsername, loginByUsernameProps} from "@/store/services/loginByUsername";
 import {Link, useLocation, useNavigate} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {getUserLoginError} from "@/store/selectors/getUserValues";
 
 interface LoginFormProps {
     className?: string;
@@ -32,14 +34,18 @@ export const LoginForm = (props: LoginFormProps) => {
     const location = useLocation();
     const fromPage = location.state?.from || '/'
 
+    const loginError = useSelector(getUserLoginError)
+
     const onSubmit: SubmitHandler<loginDataInputs> = async (data) => {
         const newData: loginByUsernameProps = {
             username: data.loginUsername,
             password: data.loginPassword
         }
 
-        await dispatch(loginByUsername(newData))
-        navigate(fromPage)
+        try {
+            await dispatch(loginByUsername(newData)).unwrap()
+            navigate(fromPage)
+        } catch (e) {}
     }
 
     const loginFormUsernameReg = register("loginUsername", { required: true, onBlur: () => trigger('loginUsername')});
@@ -48,6 +54,7 @@ export const LoginForm = (props: LoginFormProps) => {
     return (
     <div className={classNames(cls.LoginForm, {}, [className])}>
         <h2 className={cls.LoginFormTitle}>Авторизация</h2>
+        {loginError && <h3 className={cls.LoginFormError}>Ошибка при авторизации. Проверьте введенные данные</h3>}
         <form className={classNames(cls.LoginFormForma, {}, [])} onSubmit={handleSubmit(onSubmit)}>
             <div className={cls.InputWrapper}>
                 <label className={cls.InputTitle} htmlFor='loginUsername'>Логин</label>

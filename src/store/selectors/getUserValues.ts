@@ -11,6 +11,11 @@ export const getUserRole = createSelector(
     (search: UserSliceSchema) => search.role,
 );
 
+export const getUserLoginError = createSelector(
+    getUser,
+    (user: UserSliceSchema) => user.loginError,
+);
+
 export const getUserSearchIsOpen = createSelector(
     getUser,
     (search: UserSliceSchema) => search.searchIsOpen,

@@ -9,8 +9,16 @@
     .LoginFormTitle {
         font-size: 35px;
         font-weight: 500;
-        margin-bottom: 40px;
+        margin-bottom: 25px;
         text-align: center;
+    }
+
+    .LoginFormError {
+        padding: 0 20px;
+        text-align: center;
+        color: var(--red);
+        font-size: 1.125em;
+        margin-bottom: 15px;
     }
 
     .LoginFormForma {

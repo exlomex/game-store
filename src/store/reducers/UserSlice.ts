@@ -2,7 +2,7 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {cartItem, tokenInfoTypes, UserRoles, UserSliceSchema} from "./UserSliceSchema";
 import {USER_ACCESS_TOKEN_KEY} from "@/const/localStorage";
 import {jwtDecode} from "jwt-decode";
-import {UserData} from "../services/loginByUsername";
+import {loginByUsername, UserData} from "../services/loginByUsername";
 
 
 const initialState: UserSliceSchema = {
@@ -12,7 +12,8 @@ const initialState: UserSliceSchema = {
     cartItems: [],
     activeCartCheckboxes: {},
     isAsideCollapsed: false,
-    selectedPromo: ''
+    selectedPromo: '',
+    loginIsLoading: false,
 };
 
 export const UserSlice = createSlice({
@@ -75,7 +76,21 @@ export const UserSlice = createSlice({
         toggleIsAsideCollapsed: (state: UserSliceSchema) => {
             state.isAsideCollapsed = !state.isAsideCollapsed
         }
-    }
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(loginByUsername.pending, (state) => {
+                state.loginError = undefined;
+                state.loginIsLoading = true;
+            })
+            .addCase(loginByUsername.fulfilled, (state) => {
+                state.loginIsLoading = false;
+            })
+            .addCase(loginByUsername.rejected, (state, action) => {
+                state.loginIsLoading = false;
+                state.loginError = action.payload;
+            });
+    },
 });
 
 export const { actions: UserSliceActions } = UserSlice;
