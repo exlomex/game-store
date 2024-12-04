@@ -4,11 +4,35 @@
         margin-bottom: 30px;
     }
 
+    .GoodDescriptionDesc {
+        margin-top: 15px;
+        font-size: 18px;
+        line-height: 150%;
+    }
+
+    .GoodDescriptionDescTitle {
+        margin-top: 20px;
+        font-size: 20px;
+        font-weight: 500;
+    }
+
     .GoodDescriptionInner {
         display: flex;
         align-items: flex-start;
         gap: 30px 40px;
         flex-wrap: wrap;
+
+        .GoodDescriptionDesc {
+            margin-top: 0;
+            font-size: 18px;
+            line-height: 150%;
+        }
+
+        .GoodDescriptionDescTitle {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
 
         .GoodImage {
             width: 600px;

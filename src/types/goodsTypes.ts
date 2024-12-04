@@ -21,4 +21,5 @@ export interface GoodType {
     "image": string | null,
     "orderedCount": number,
     "reviews": ReviewType[]
+    "description": string;
 }

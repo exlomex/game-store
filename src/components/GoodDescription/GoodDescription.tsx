@@ -7,6 +7,7 @@ import {useSelector} from "react-redux";
 import {getUserAuth, getUserCartIdByGoodId, getUserCartIds} from "@/store/selectors/getUserValues";
 import {AllConsoles, AllGenres} from "@/store/reducers/FilterSliceSchema";
 import {useGoodButtonHandler} from "@/hooks/useButtonClickHandler";
+import {useMediaQuery} from "react-responsive";
 
 interface GoodDescriptionProps {
     className?: string;
@@ -43,6 +44,8 @@ export const GoodDescription = (props: GoodDescriptionProps) => {
         }
     }
 
+    const isMoveDescriptionPositionQuery = useMediaQuery({ query: '(max-width: 1290px)' })
+
     if (!data) return (
         <></>
     )
@@ -58,6 +61,13 @@ export const GoodDescription = (props: GoodDescriptionProps) => {
                         <div className={classNames(cls.GoodImage, {}, [cls.GoodWithoutImage])}></div>
                     }
 
+                    {isMoveDescriptionPositionQuery &&
+                        <div>
+                            <p className={cls.GoodDescriptionDescTitle}>Описание:</p>
+                            <div className={cls.GoodDescriptionDesc}>{data.description}</div>
+                        </div>
+                    }
+
                     <div className={cls.GoodDescriptionRightBox}>
                         <div className={cls.GoodSpecs}>
                             <p className={cls.GoodSpecTitle}>Характеристики: </p>
@@ -69,6 +79,13 @@ export const GoodDescription = (props: GoodDescriptionProps) => {
                         <Button onClick={onGoodButtonClickHandler(isGoodInCartByIds, goodId, cartIdByGoodId)} disabled={!isAuth}>{isGoodInCartByIds ? 'Удалить из корзины' : 'В корзину'}</Button>
                     </div>
                 </div>
+
+                {!isMoveDescriptionPositionQuery &&
+                    <div>
+                        <p className={cls.GoodDescriptionDescTitle}>Описание:</p>
+                        <div className={cls.GoodDescriptionDesc}>{data.description}</div>
+                    </div>
+                }
             </MainContainer>
         </section>
     )

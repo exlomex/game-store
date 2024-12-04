@@ -46,9 +46,6 @@ export const CartDescription = (props: CartDescriptionProps) => {
 
     const navigate = useNavigate()
 
-    // useEffect(() => {
-    //     orderData && dispatch(UserSliceActions.setLastOrderDetails(orderData))
-    // }, [orderData]);
     const onPurchaseButtonClickHandler = async () => {
         try {
             await createNewOrder({ids: activeCartCheckboxesArray})
