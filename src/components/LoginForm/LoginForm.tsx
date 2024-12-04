@@ -54,7 +54,7 @@ export const LoginForm = (props: LoginFormProps) => {
     return (
     <div className={classNames(cls.LoginForm, {}, [className])}>
         <h2 className={cls.LoginFormTitle}>Авторизация</h2>
-        {loginError && <h3 className={cls.LoginFormError}>Ошибка при авторизации. Проверьте введенные данные</h3>}
+        {loginError && <h3 className={cls.LoginFormError}>Неверный логин или пароль</h3>}
         <form className={classNames(cls.LoginFormForma, {}, [])} onSubmit={handleSubmit(onSubmit)}>
             <div className={cls.InputWrapper}>
                 <label className={cls.InputTitle} htmlFor='loginUsername'>Логин</label>
