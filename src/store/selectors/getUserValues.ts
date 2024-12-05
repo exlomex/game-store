@@ -16,6 +16,11 @@ export const getUserLoginError = createSelector(
     (user: UserSliceSchema) => user.loginError,
 );
 
+export const getUserActivePromo = createSelector(
+    getUser,
+    (user: UserSliceSchema) => user.activePromo,
+);
+
 export const getUserSearchIsOpen = createSelector(
     getUser,
     (search: UserSliceSchema) => search.searchIsOpen,

@@ -22,6 +22,14 @@
 
 .CartDescription {
     margin-top: 30px;
+
+    .Promos {
+        margin-bottom: 15px;
+        .PromosTitle {
+            margin-bottom: 10px;
+        }
+    }
+
     .CartDescriptionUpperLine {
 
         display: flex;

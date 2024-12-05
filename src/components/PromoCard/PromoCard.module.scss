@@ -1,0 +1,29 @@
+.PromoCard {
+    padding: 20px 25px;
+    max-width: 340px;
+
+    .PromoTitle {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .PromoSubTitle {
+        font-size: 16px;
+        color: var(--grey);
+        margin-bottom: 20px;
+    }
+
+    .PromoBottomContainer {
+        display: flex;
+        justify-content: space-between;
+
+        .PromoName {
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            stroke: var(--dark-grey);
+            font-size: 18px;
+        }
+    }
+}

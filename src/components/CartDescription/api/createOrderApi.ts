@@ -16,7 +16,7 @@ export interface OrderInterface {
 
 const createOrderApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
-        createNewOrder: build.mutation<OrderInterface, {ids: number[]}>({
+        createNewOrder: build.mutation<OrderInterface, {ids: number[], promocodeName?: string}>({
             query: (body) => ({
                 url: '/orders',
                 method: 'POST',

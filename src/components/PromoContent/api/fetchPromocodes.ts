@@ -1,14 +1,18 @@
 import { rtkApi } from '@/api/RtkApi'
 
-interface PromoType {
-
+export interface PromoType {
+    "id": number,
+    "name": string,
+    "userId": number,
+    "discount": number,
+    "active": boolean
 }
 
 const extendedApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
-        fetchPromocodes: build.query<PromoType[], {id: number}>({
-            query: ({id}) => ({
-                url: `/`,
+        fetchPromocodes: build.query<PromoType[], null>({
+            query: () => ({
+                url: `/promocodes`,
             }),
             providesTags: []
         }),
@@ -16,4 +20,4 @@ const extendedApi = rtkApi.injectEndpoints({
     }),
 })
 
-export const useFetchGoodReviewsById = extendedApi.useFetchPromocodesQuery
+export const useFetchPromocodes = extendedApi.useFetchPromocodesQuery

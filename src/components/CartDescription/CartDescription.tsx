@@ -8,7 +8,7 @@ import {useDeleteGoodFromCart} from "@/components/ui/GoodCard/api/cartApi";
 import {useSelector} from "react-redux";
 import {
     getUserActiveCartCheckboxes,
-    getUserActiveCartCheckboxesArray,
+    getUserActiveCartCheckboxesArray, getUserActivePromo,
     getUserIsAllCartCheckboxesActive
 } from "@/store/selectors/getUserValues";
 import {ReactComponent as TrashSvg} from "@/assets/trashIcon.svg";
@@ -19,6 +19,11 @@ import {useFetchCartItems} from "@/components/AsideNavigation/api/fetchCartItems
 import {cartItem} from "@/store/reducers/UserSliceSchema";
 import {MainContainer} from "@/components/MainContainer";
 import {CheckBox} from "@/components/ui/CheckBox";
+import {Select} from "@/components/ui/Select";
+import {OptionInterface} from "@/components/ui/Select/Select";
+import {useFetchPromocodes} from "@/components/PromoContent/api/fetchPromocodes";
+import {AllConsoles} from "@/store/reducers/FilterSliceSchema";
+import {FilterSliceActions} from "@/store/reducers/FilterSlice";
 interface CartDescriptionProps {
     className?: string;
 }
@@ -46,19 +51,41 @@ export const CartDescription = (props: CartDescriptionProps) => {
 
     const navigate = useNavigate()
 
+    const activePromo = useSelector(getUserActivePromo)
+
     const onPurchaseButtonClickHandler = async () => {
         try {
-            await createNewOrder({ids: activeCartCheckboxesArray})
-            navigate('/orders')
+            const payload = {
+                ids: activeCartCheckboxesArray,
+                ...(activePromo && activePromo.name.length >= 1 && { promocodeName: activePromo.name })
+            };
+
+            await createNewOrder(payload).unwrap();
+
+            dispatch(UserSliceActions.clearCardCheckboxes());
+            navigate('/orders');
         } catch (e) {
             console.error('Ошибка при создании заказа:', e);
-            throw new Error()
         }
-    }
+    };
 
-    if (isLoading) {
-        return <></>
-    }
+
+    const {data: promosData} = useFetchPromocodes(null)
+
+    const selectPromocodesOptions: OptionInterface<string>[] = [
+        {value: '', title: 'Промокоды'},
+        ...(promosData
+            ? promosData.map(promo => ({
+                value: promo.name,
+                title: promo.name,
+                id: promo.id
+            }))
+            : [])
+    ]
+
+    const handlePromoChange = (value: string, id?: number) => {
+        dispatch(UserSliceActions.setActivePromo({name: value, id: id || 0}));
+    };
 
     const totalPrice = (currentCartItems: cartItem[], activeCartCheckboxes: Record<number, boolean>) => {
         let totalPrice = 0;
@@ -66,6 +93,10 @@ export const CartDescription = (props: CartDescriptionProps) => {
             if (activeCartCheckboxes[cartItem.id]) totalPrice += cartItem.good.price
         });
         return totalPrice;
+    }
+
+    if (isLoading) {
+        return <></>
     }
 
     if (currentCartItems && currentCartItems.length === 0) {
@@ -93,6 +124,11 @@ export const CartDescription = (props: CartDescriptionProps) => {
                 <div className={cls.CartItems}>
                     {currentCartItems && currentCartItems.map(cartItem => (
                         <CartGoodCard key={cartItem.id} good={cartItem.good} quantity={cartItem.quantity} cartId={cartItem.id}/>))}
+                </div>
+
+                <div className={cls.Promos}>
+                    <p className={cls.PromosTitle}>Промокод:</p>
+                    <Select options={selectPromocodesOptions} currentValue={activePromo ? activePromo.name : 'Промкоды'} onChange={handlePromoChange}/>
                 </div>
 
                 <div className={cls.CartBottomLine}>

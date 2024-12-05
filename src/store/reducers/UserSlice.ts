@@ -75,6 +75,12 @@ export const UserSlice = createSlice({
         },
         toggleIsAsideCollapsed: (state: UserSliceSchema) => {
             state.isAsideCollapsed = !state.isAsideCollapsed
+        },
+        setActivePromo: (state: UserSliceSchema, action: PayloadAction<{id: number, name: string}>) => {
+            state.activePromo = action.payload
+        },
+        clearCardCheckboxes: (state: UserSliceSchema) => {
+            state.activeCartCheckboxes = {}
         }
     },
     extraReducers: (builder) => {

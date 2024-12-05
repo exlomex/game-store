@@ -1,5 +1,6 @@
 import {JwtPayload} from "jwt-decode";
 import {GoodType} from "@/types/goodsTypes";
+import {PromoType} from "@/components/PromoContent/api/fetchPromocodes";
 
 export enum UserRoles {
     ADMIN =  'ADMIN',
@@ -24,6 +25,7 @@ export interface UserSliceSchema {
     selectedPromo: string;
     loginError?: string;
     loginIsLoading: boolean;
+    activePromo?: {id: number, name: string};
 }
 
 export interface tokenInfoTypes extends JwtPayload {

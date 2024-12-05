@@ -1,6 +1,15 @@
 .PromoContent {
     .PromoInner {
+        .PromoTitle {
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
 
+        .PromosContainer {
+            flex-wrap: wrap;
+            display: flex;
+            gap: 30px;
+        }
     }
 }
 
