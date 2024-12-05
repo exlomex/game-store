@@ -1,21 +1,32 @@
 .OrderedGoodsList {
-    padding: 20px 0;
-    border-bottom: 1px solid var(--light-grey);
+    padding: 20px 20px;
     width: 100%;
+    border: 1px solid var(--light-grey);
+    border-radius: 12px;
+    margin-bottom: 10px;
 
-    .orderDate {
-        font-size: 1.111em;
-        font-weight: 500;
+    .GoodsListTopLine {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 20px;
         margin-bottom: 20px;
-    }
 
-    .OrderPrice {
-        span {
-            font-weight: 400;
+        .orderDate {
+            line-height: 150%;
+            font-size: 1.111em;
+            font-weight: 500;
         }
 
-        margin-bottom: 20px;
+        .OrderPrice {
+            span {
+                font-weight: 400;
+            }
+
+        }
     }
+
+
 
     .GoodsList {
         .GoodWrapper {

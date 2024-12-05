@@ -28,8 +28,10 @@ export const OrderedGoodsList = (props: OrderedGoodsListProps) => {
 
     return (
         <div className={classNames(cls.OrderedGoodsList, {}, [className])}>
-            <p className={cls.orderDate}><span>Заказ от</span> {formatDate(orderDescription.dateCreated)}</p>
-            <p className={cls.OrderPrice}><span>Итоговая стоимость: </span>{orderDescription.amount} ₽</p>
+            <div className={cls.GoodsListTopLine}>
+                <p className={cls.orderDate}><span>Заказ за</span> {formatDate(orderDescription.dateCreated)}</p>
+                <p className={cls.OrderPrice}><span>Стоимость: </span>{orderDescription.amount} ₽</p>
+            </div>
 
             <div className={cls.GoodsList}>
                 {goodsList.map((good, index) => (
