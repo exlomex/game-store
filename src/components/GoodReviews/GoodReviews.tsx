@@ -28,8 +28,6 @@ export const GoodReviews = (props: GoodReviewsProps) => {
         return Math.round(reviews.reduce((acc, item) => acc + item.rating , 0) / reviews.length)
     }, [reviews])
 
-    const dispatch = useAppDispatch()
-
     const {
         register,
         handleSubmit,
@@ -65,7 +63,6 @@ export const GoodReviews = (props: GoodReviewsProps) => {
     if (!reviews) {
         return (
             <></>
-
         )
     }
 

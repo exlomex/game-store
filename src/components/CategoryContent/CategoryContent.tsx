@@ -27,6 +27,10 @@ export const CategoryContent = (props: CategoryContentProps) => {
         {value: '', title: 'Жанр'},
         {value: 'SPORT', title: 'Спорт'},
         {value: 'FIGHTING', title: 'Файтинги'},
+        {value: 'ACTION', title: 'Симуляторы'},
+        {value: 'ROLE_GAME', title: 'Ролевые игры'},
+        {value: 'PUZZLE', title: 'Головоломки'},
+        {value: 'STRATEGY', title: 'Стратегии'},
     ]
     const handleGenreChange = (value: AllGenres | '') => {
         dispatch(FilterSliceActions.setGenreFilter(value));
