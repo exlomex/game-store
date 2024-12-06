@@ -67,7 +67,7 @@ export const UserSlice = createSlice({
                 }, 0)
 
 
-            if (totalOfActiveCheckboxes === state.cartItems.length) {state.activeCartCheckboxes = []}
+            if (totalOfActiveCheckboxes === state.cartItems.length) {state.activeCartCheckboxes = {}}
             else {state.cartItems.forEach(cartItem => state.activeCartCheckboxes[cartItem.id] = true)}
         },
         setIsAsideCollapsed: (state: UserSliceSchema, action: PayloadAction<boolean>) => {

@@ -70,7 +70,9 @@ export const getUserIsAllCartCheckboxesActive = createSelector(
     (user: UserSliceSchema) => {
         const totalOfActiveCheckboxes = Object.keys(user.activeCartCheckboxes)
             .reduce((acc, currentValue) => {
-                if (user.activeCartCheckboxes[+currentValue]) return acc += 1;
+                const currentCartItemsArray = user.cartItems.map(cartItem => cartItem.id)
+
+                if (user.activeCartCheckboxes[+currentValue] && currentCartItemsArray.includes(+currentValue)) return acc += 1;
                 return acc
             }, 0)
 
